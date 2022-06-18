@@ -1,0 +1,234 @@
+﻿<Window x:Class="WPF_Keyboard_Trainer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPF_Keyboard_Trainer"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="520" Width="910" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Window.Resources>
+        <ControlTemplate x:Key="ButtonTemplate1" TargetType="{x:Type Button}">
+            <Grid>
+                <Rectangle Height="55" Width="55" RadiusX="15" RadiusY="12" Margin="2"
+                         Stroke="{TemplateBinding BorderBrush}" 
+                         Fill="{TemplateBinding Background}"/>
+                <ContentPresenter  VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </Grid>
+        </ControlTemplate>
+        <ControlTemplate x:Key="ButtonTemplate2" TargetType="{x:Type Button}">
+            <Grid>
+                <Rectangle Height="55" Width="120" RadiusX="15" RadiusY="12" Margin="2"
+                         Stroke="{TemplateBinding BorderBrush}" 
+                         Fill="{TemplateBinding Background}"/>
+                <ContentPresenter  VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </Grid>
+        </ControlTemplate>
+        <ControlTemplate x:Key="ButtonTemplate3" TargetType="{x:Type Button}">
+            <Grid>
+                <Rectangle Height="55" Width="87" RadiusX="15" RadiusY="12" Margin="2"
+                         Stroke="{TemplateBinding BorderBrush}" 
+                         Fill="{TemplateBinding Background}"/>
+
+                <ContentPresenter  VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </Grid>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="ButtonTemplate4" TargetType="{x:Type Button}">
+            <Grid>
+                <Rectangle Height="55" Width="117" RadiusX="15" RadiusY="12" Margin="2"
+                         Stroke="{TemplateBinding BorderBrush}" 
+                         Fill="{TemplateBinding Background}"/>
+
+                <ContentPresenter  VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </Grid>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="ButtonTemplate5" TargetType="{x:Type Button}">
+            <Grid>
+                <Rectangle Height="55" Width="146" RadiusX="15" RadiusY="12" Margin="2"
+                         Stroke="{TemplateBinding BorderBrush}" 
+                         Fill="{TemplateBinding Background}"/>
+
+                <ContentPresenter  VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </Grid>
+        </ControlTemplate>
+
+        <ControlTemplate x:Key="ButtonTemplate6" TargetType="{x:Type Button}">
+            <Grid>
+                <Rectangle Height="55" Width="341" RadiusX="15" RadiusY="12" Margin="2"
+                         Stroke="{TemplateBinding BorderBrush}" 
+                         Fill="{TemplateBinding Background}"/>
+
+                <ContentPresenter  VerticalAlignment="Center" HorizontalAlignment="Center" />
+            </Grid>
+        </ControlTemplate>
+        <Style TargetType="{x:Type Button}" x:Key="PinkKey">
+            <Setter Property="Template" Value="{StaticResource ButtonTemplate1}"/>
+            <Setter Property="Background" Value="DeepPink"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="FontSize" Value="45"/>
+            <Setter Property="FontFamily" Value="TimesNew Roman"/>
+        </Style>
+        <Style TargetType="{x:Type Button}" x:Key="YellowKey">
+            <Setter Property="Template" Value="{StaticResource ButtonTemplate1}"/>
+            <Setter Property="Background" Value="Yellow"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="FontSize" Value="45"/>
+            <Setter Property="FontFamily" Value="TimesNew Roman"/>
+        </Style>
+        <Style TargetType="{x:Type Button}" x:Key="GreenKey">
+            <Setter Property="Template" Value="{StaticResource ButtonTemplate1}"/>
+            <Setter Property="Background" Value="LightGreen"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="FontSize" Value="45"/>
+            <Setter Property="FontFamily" Value="TimesNew Roman"/>
+        </Style>
+        <Style TargetType="{x:Type Button}" x:Key="BlueKey">
+            <Setter Property="Template" Value="{StaticResource ButtonTemplate1}"/>
+            <Setter Property="Background" Value="LightSkyBlue"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="FontSize" Value="45"/>
+            <Setter Property="FontFamily" Value="TimesNew Roman"/>
+        </Style>
+        <Style TargetType="{x:Type Button}" x:Key="VioletKey">
+            <Setter Property="Template" Value="{StaticResource ButtonTemplate1}"/>
+            <Setter Property="Background" Value="MediumPurple"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="FontSize" Value="45"/>
+            <Setter Property="FontFamily" Value="TimesNew Roman"/>
+        </Style>
+        <Style TargetType="{x:Type Button}" x:Key="GrayKey1">
+            <Setter Property="Template" Value="{StaticResource ButtonTemplate2}"/>
+            <Setter Property="Background" Value="LightSlateGray"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="TimesNew Roman"/>
+        </Style>
+        <Style TargetType="{x:Type Button}" x:Key="GrayKey2">
+            <Setter Property="Template" Value="{StaticResource ButtonTemplate3}"/>
+            <Setter Property="Background" Value="LightSlateGray"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="TimesNew Roman"/>
+        </Style>
+        <Style TargetType="{x:Type Button}" x:Key="GrayKey3">
+            <Setter Property="Template" Value="{StaticResource ButtonTemplate4}"/>
+            <Setter Property="Background" Value="LightSlateGray"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="TimesNew Roman"/>
+        </Style>
+        <Style TargetType="{x:Type Button}" x:Key="GrayKey4">
+            <Setter Property="Template" Value="{StaticResource ButtonTemplate5}"/>
+            <Setter Property="Background" Value="LightSlateGray"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="TimesNew Roman"/>
+        </Style>
+        <Style TargetType="{x:Type Button}" x:Key="Spacekey">
+            <Setter Property="Template" Value="{StaticResource ButtonTemplate6}"/>
+            <Setter Property="Background" Value="SandyBrown"/>
+            <Setter Property="BorderBrush" Value="Black"/>
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="TimesNew Roman"/>
+        </Style>
+        <Style TargetType="Label" x:Key="LabelStyle">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="Times New Roman"/>
+        </Style>
+        <Style TargetType="Label" x:Key="LabelStyle2">
+            <Setter Property="FontSize" Value="20"/>
+            <Setter Property="FontFamily" Value="Times New Roman"/>
+            <Setter Property="FontWeight" Value="Bold"/>
+        </Style>
+
+
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.30*"></RowDefinition>
+            <RowDefinition Height="0.30*"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBox Grid.Row="1" Background="LightSteelBlue"/>
+        <Grid Grid.Row="0">
+            <Label Style="{StaticResource LabelStyle}">Speed:</Label>
+            <Label Style="{StaticResource LabelStyle2}" HorizontalAlignment="Left" Margin="60,0,0,0">0</Label>
+            <Label Style="{StaticResource LabelStyle}" Margin="74,0,0,0" HorizontalAlignment="Left">char/min:</Label>
+            <Label Style="{StaticResource LabelStyle}" Margin="0,0,600,0" HorizontalAlignment="Right">Fails:</Label>
+            <Label Style="{StaticResource LabelStyle2}" HorizontalAlignment="Left" Margin="294,0,0,0">0</Label>
+            <Label Style="{StaticResource LabelStyle}" Margin="0,0,326,0" HorizontalAlignment="Right">Difficulty:</Label>
+            <Label Style="{StaticResource LabelStyle2}" HorizontalAlignment="Right" Margin="0,0,311,0" Content="{Binding ElementName=Slider, Path=Value, Mode=OneWay}" ContentStringFormat="F0"></Label>
+            <Label Style="{StaticResource LabelStyle}" Margin="0,0,52,0" HorizontalAlignment="Right">Case Sensitive:</Label>
+            <CheckBox Margin="0,11,36,0" HorizontalAlignment="Right"></CheckBox>
+            <Slider x:Name="Slider" Maximum="5" Margin="598,-4,200,50" Height="30" SmallChange="1" TickPlacement="Both" />
+
+            <Button Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="25" Width="195" Margin="0,0,210,5" FontSize="16">Start</Button>
+            <Button Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="25" Width="195" Margin="3,0,5,5" FontSize="16" IsEnabled="False">Stop</Button>
+        </Grid>
+        <WrapPanel Grid.Row="2">
+            <Button Grid.Row="2" Style="{StaticResource PinkKey}">`</Button>
+            <Button Grid.Row="2" Style="{StaticResource PinkKey}">1</Button>
+            <Button Grid.Row="2" Style="{StaticResource PinkKey}">2</Button>
+            <Button Grid.Row="2" Style="{StaticResource YellowKey}">3</Button>
+            <Button Grid.Row="2" Style="{StaticResource GreenKey}">4</Button>
+            <Button Grid.Row="2" Style="{StaticResource BlueKey}">5</Button>
+            <Button Grid.Row="2" Style="{StaticResource BlueKey}">6</Button>
+            <Button Grid.Row="2" Style="{StaticResource VioletKey}">7</Button>
+            <Button Grid.Row="2" Style="{StaticResource VioletKey}">8</Button>
+            <Button Grid.Row="2" Style="{StaticResource PinkKey}">9</Button>
+            <Button Grid.Row="2" Style="{StaticResource YellowKey}">0</Button>
+            <Button Grid.Row="2" Style="{StaticResource GreenKey}">-</Button>
+            <Button Grid.Row="2" Style="{StaticResource GreenKey}">=</Button>
+            <Button Grid.Row="2" Style="{StaticResource GrayKey1}">Backspace</Button>
+            <Button Grid.Row="2" Style="{StaticResource GrayKey2}">Tab</Button>
+            <Button Grid.Row="2" Style="{StaticResource PinkKey}">q</Button>
+            <Button Grid.Row="2" Style="{StaticResource YellowKey}">w</Button>
+            <Button Grid.Row="2" Style="{StaticResource GreenKey}">e</Button>
+            <Button Grid.Row="2" Style="{StaticResource BlueKey}">r</Button>
+            <Button Grid.Row="2" Style="{StaticResource BlueKey}">t</Button>
+            <Button Grid.Row="2" Style="{StaticResource VioletKey}">y</Button>
+            <Button Grid.Row="2" Style="{StaticResource VioletKey}">u</Button>
+            <Button Grid.Row="2" Style="{StaticResource PinkKey}">i</Button>
+            <Button Grid.Row="2" Style="{StaticResource YellowKey}">o</Button>
+            <Button Grid.Row="2" Style="{StaticResource GreenKey}">p</Button>
+            <Button Grid.Row="2" Style="{StaticResource GreenKey}">[</Button>
+            <Button Grid.Row="2" Style="{StaticResource GreenKey}">]</Button>
+            <Button Grid.Row="2" Style="{StaticResource GrayKey2}" Background="LightGreen" FontSize="45">\</Button>
+            <Button Grid.Row="2" Style="{StaticResource GrayKey3}">Caps Lock</Button>
+            <Button Grid.Row="2" Style="{StaticResource PinkKey}">a</Button>
+            <Button Grid.Row="2" Style="{StaticResource YellowKey}">s</Button>
+            <Button Grid.Row="2" Style="{StaticResource GreenKey}">d</Button>
+            <Button Grid.Row="2" Style="{StaticResource BlueKey}">f</Button>
+            <Button Grid.Row="2" Style="{StaticResource BlueKey}">g</Button>
+            <Button Grid.Row="2" Style="{StaticResource VioletKey}">h</Button>
+            <Button Grid.Row="2" Style="{StaticResource VioletKey}">j</Button>
+            <Button Grid.Row="2" Style="{StaticResource PinkKey}">k</Button>
+            <Button Grid.Row="2" Style="{StaticResource YellowKey}">l</Button>
+            <Button Grid.Row="2" Style="{StaticResource GreenKey}">;</Button>
+            <Button Grid.Row="2" Style="{StaticResource GreenKey}">'</Button>
+            <Button Grid.Row="2" Style="{StaticResource GrayKey3}">Enter</Button>
+            <Button Grid.Row="2" Style="{StaticResource GrayKey4}">Shift</Button>
+            <Button Grid.Row="2" Style="{StaticResource PinkKey}">z</Button>
+            <Button Grid.Row="2" Style="{StaticResource YellowKey}">x</Button>
+            <Button Grid.Row="2" Style="{StaticResource GreenKey}">c</Button>
+            <Button Grid.Row="2" Style="{StaticResource BlueKey}">v</Button>
+            <Button Grid.Row="2" Style="{StaticResource BlueKey}">b</Button>
+            <Button Grid.Row="2" Style="{StaticResource VioletKey}">n</Button>
+            <Button Grid.Row="2" Style="{StaticResource VioletKey}">m</Button>
+            <Button Grid.Row="2" Style="{StaticResource PinkKey}">,</Button>
+            <Button Grid.Row="2" Style="{StaticResource YellowKey}">.</Button>
+            <Button Grid.Row="2" Style="{StaticResource GreenKey}">/</Button>
+            <Button Grid.Row="2" Style="{StaticResource GrayKey4}">Shift</Button>
+            <Button Grid.Row="2" Style="{StaticResource GrayKey2}">Ctrl</Button>
+            <Button Grid.Row="2" Style="{StaticResource GrayKey2}">Win</Button>
+            <Button Grid.Row="2" Style="{StaticResource GrayKey2}">Alt</Button>
+            <Button Grid.Row="2" Style="{StaticResource Spacekey}">Space</Button>
+            <Button Grid.Row="2" Style="{StaticResource GrayKey2}">Alt</Button>
+            <Button Grid.Row="2" Style="{StaticResource GrayKey2}">Win</Button>
+            <Button Grid.Row="2" Style="{StaticResource GrayKey2}">Ctrl</Button>
+
+
+        </WrapPanel>
+    </Grid>
+</Window>
