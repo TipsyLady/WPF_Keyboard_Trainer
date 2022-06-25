@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WPF_Keyboard_Trainer"
         mc:Ignorable="d"
-        Title="MainWindow" Height="520" Width="910" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="MainWindow" Height="520" Width="910" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" KeyDown="Window_KeyDown" KeyUp="Window_KeyUp">
     <Window.Resources>
         <ControlTemplate x:Key="ButtonTemplate1" TargetType="{x:Type Button}">
             <Grid>
@@ -147,86 +147,88 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.30*"></RowDefinition>
-            <RowDefinition Height="0.30*"></RowDefinition>
+            <RowDefinition Height="0.15*"></RowDefinition>
+            <RowDefinition Height="0.15*"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <TextBox Grid.Row="1" Background="LightSteelBlue"/>
-        <Grid Grid.Row="0">
+        <TextBox x:Name="TextBox1" Grid.Row="1" Background="LightSteelBlue" Grid.ColumnSpan="7" Margin="0,0,0,45" Grid.RowSpan="2" FontSize="20" FontFamily="Microsoft Sans Serif"/>
+        <TextBox x:Name="TextBox2" Grid.Row="1" Background="Beige" Grid.ColumnSpan="7" Margin="0,46,0,0" Grid.RowSpan="2" FontFamily="Microsoft Sans Serif" FontSize="20" TextChanged="TextBox2_TextChanged"/>
+        <Grid Grid.Row="0" Grid.ColumnSpan="7">
             <Label Style="{StaticResource LabelStyle}">Speed:</Label>
-            <Label Style="{StaticResource LabelStyle2}" HorizontalAlignment="Left" Margin="60,0,0,0">0</Label>
-            <Label Style="{StaticResource LabelStyle}" Margin="74,0,0,0" HorizontalAlignment="Left">char/min:</Label>
+            <Label x:Name="_speed" Style="{StaticResource LabelStyle2}" HorizontalAlignment="Left" Margin="61,0,0,0">0</Label>
+            <Label Style="{StaticResource LabelStyle}" Margin="95,0,0,0" HorizontalAlignment="Left">char/min</Label>
             <Label Style="{StaticResource LabelStyle}" Margin="0,0,600,0" HorizontalAlignment="Right">Fails:</Label>
-            <Label Style="{StaticResource LabelStyle2}" HorizontalAlignment="Left" Margin="294,0,0,0">0</Label>
+            <Label x:Name="fails" Style="{StaticResource LabelStyle2}" HorizontalAlignment="Left" Margin="294,0,0,0">0</Label>
             <Label Style="{StaticResource LabelStyle}" Margin="0,0,326,0" HorizontalAlignment="Right">Difficulty:</Label>
-            <Label Style="{StaticResource LabelStyle2}" HorizontalAlignment="Right" Margin="0,0,311,0" Content="{Binding ElementName=Slider, Path=Value, Mode=OneWay}" ContentStringFormat="F0"></Label>
+            <Label x:Name="Difficulty" Style="{StaticResource LabelStyle2}" HorizontalAlignment="Right" Margin="0,0,311,0" Content="{Binding ElementName=Slider, Path=Value, Mode=OneWay}" ContentStringFormat="F0"></Label>
             <Label Style="{StaticResource LabelStyle}" Margin="0,0,52,0" HorizontalAlignment="Right">Case Sensitive:</Label>
-            <CheckBox Margin="0,11,36,0" HorizontalAlignment="Right"></CheckBox>
-            <Slider x:Name="Slider" Maximum="5" Margin="598,-4,200,50" Height="30" SmallChange="1" TickPlacement="Both" />
+            <CheckBox x:Name="Button_Capital" Margin="0,11,36,0" HorizontalAlignment="Right"></CheckBox>
+            <Slider x:Name="Slider" Maximum="5" Margin="598,-4,200,50" Height="30" SmallChange="1" TickPlacement="Both" Minimum="1" />
 
-            <Button Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="25" Width="195" Margin="0,0,210,5" FontSize="16">Start</Button>
-            <Button Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="25" Width="195" Margin="3,0,5,5" FontSize="16" IsEnabled="False">Stop</Button>
+            <Button x:Name="Button_Start" Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="25" Width="195" Margin="0,0,210,5" FontSize="16" Click="Button_Start_Click">Start</Button>
+            <Button x:Name="Button_Stop" Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Right" Height="25" Width="195" Margin="3,0,5,5" FontSize="16" IsEnabled="False" Click="Button_Stop_Click">Stop</Button>
         </Grid>
-        <WrapPanel Grid.Row="2">
-            <Button Grid.Row="2" Style="{StaticResource PinkKey}">`</Button>
-            <Button Grid.Row="2" Style="{StaticResource PinkKey}">1</Button>
-            <Button Grid.Row="2" Style="{StaticResource PinkKey}">2</Button>
-            <Button Grid.Row="2" Style="{StaticResource YellowKey}">3</Button>
-            <Button Grid.Row="2" Style="{StaticResource GreenKey}">4</Button>
-            <Button Grid.Row="2" Style="{StaticResource BlueKey}">5</Button>
-            <Button Grid.Row="2" Style="{StaticResource BlueKey}">6</Button>
-            <Button Grid.Row="2" Style="{StaticResource VioletKey}">7</Button>
-            <Button Grid.Row="2" Style="{StaticResource VioletKey}">8</Button>
-            <Button Grid.Row="2" Style="{StaticResource PinkKey}">9</Button>
-            <Button Grid.Row="2" Style="{StaticResource YellowKey}">0</Button>
-            <Button Grid.Row="2" Style="{StaticResource GreenKey}">-</Button>
-            <Button Grid.Row="2" Style="{StaticResource GreenKey}">=</Button>
-            <Button Grid.Row="2" Style="{StaticResource GrayKey1}">Backspace</Button>
-            <Button Grid.Row="2" Style="{StaticResource GrayKey2}">Tab</Button>
-            <Button Grid.Row="2" Style="{StaticResource PinkKey}">q</Button>
-            <Button Grid.Row="2" Style="{StaticResource YellowKey}">w</Button>
-            <Button Grid.Row="2" Style="{StaticResource GreenKey}">e</Button>
-            <Button Grid.Row="2" Style="{StaticResource BlueKey}">r</Button>
-            <Button Grid.Row="2" Style="{StaticResource BlueKey}">t</Button>
-            <Button Grid.Row="2" Style="{StaticResource VioletKey}">y</Button>
-            <Button Grid.Row="2" Style="{StaticResource VioletKey}">u</Button>
-            <Button Grid.Row="2" Style="{StaticResource PinkKey}">i</Button>
-            <Button Grid.Row="2" Style="{StaticResource YellowKey}">o</Button>
-            <Button Grid.Row="2" Style="{StaticResource GreenKey}">p</Button>
-            <Button Grid.Row="2" Style="{StaticResource GreenKey}">[</Button>
-            <Button Grid.Row="2" Style="{StaticResource GreenKey}">]</Button>
-            <Button Grid.Row="2" Style="{StaticResource GrayKey2}" Background="LightGreen" FontSize="45">\</Button>
-            <Button Grid.Row="2" Style="{StaticResource GrayKey3}">Caps Lock</Button>
-            <Button Grid.Row="2" Style="{StaticResource PinkKey}">a</Button>
-            <Button Grid.Row="2" Style="{StaticResource YellowKey}">s</Button>
-            <Button Grid.Row="2" Style="{StaticResource GreenKey}">d</Button>
-            <Button Grid.Row="2" Style="{StaticResource BlueKey}">f</Button>
-            <Button Grid.Row="2" Style="{StaticResource BlueKey}">g</Button>
-            <Button Grid.Row="2" Style="{StaticResource VioletKey}">h</Button>
-            <Button Grid.Row="2" Style="{StaticResource VioletKey}">j</Button>
-            <Button Grid.Row="2" Style="{StaticResource PinkKey}">k</Button>
-            <Button Grid.Row="2" Style="{StaticResource YellowKey}">l</Button>
-            <Button Grid.Row="2" Style="{StaticResource GreenKey}">;</Button>
-            <Button Grid.Row="2" Style="{StaticResource GreenKey}">'</Button>
-            <Button Grid.Row="2" Style="{StaticResource GrayKey3}">Enter</Button>
-            <Button Grid.Row="2" Style="{StaticResource GrayKey4}">Shift</Button>
-            <Button Grid.Row="2" Style="{StaticResource PinkKey}">z</Button>
-            <Button Grid.Row="2" Style="{StaticResource YellowKey}">x</Button>
-            <Button Grid.Row="2" Style="{StaticResource GreenKey}">c</Button>
-            <Button Grid.Row="2" Style="{StaticResource BlueKey}">v</Button>
-            <Button Grid.Row="2" Style="{StaticResource BlueKey}">b</Button>
-            <Button Grid.Row="2" Style="{StaticResource VioletKey}">n</Button>
-            <Button Grid.Row="2" Style="{StaticResource VioletKey}">m</Button>
-            <Button Grid.Row="2" Style="{StaticResource PinkKey}">,</Button>
-            <Button Grid.Row="2" Style="{StaticResource YellowKey}">.</Button>
-            <Button Grid.Row="2" Style="{StaticResource GreenKey}">/</Button>
-            <Button Grid.Row="2" Style="{StaticResource GrayKey4}">Shift</Button>
-            <Button Grid.Row="2" Style="{StaticResource GrayKey2}">Ctrl</Button>
-            <Button Grid.Row="2" Style="{StaticResource GrayKey2}">Win</Button>
-            <Button Grid.Row="2" Style="{StaticResource GrayKey2}">Alt</Button>
-            <Button Grid.Row="2" Style="{StaticResource Spacekey}">Space</Button>
-            <Button Grid.Row="2" Style="{StaticResource GrayKey2}">Alt</Button>
-            <Button Grid.Row="2" Style="{StaticResource GrayKey2}">Win</Button>
-            <Button Grid.Row="2" Style="{StaticResource GrayKey2}">Ctrl</Button>
+        <WrapPanel x:Name="Buttons" Grid.Row="3"  Grid.ColumnSpan="7" Margin="0,0,0,0.4">
+            <Button x:Name="Oem3" Grid.Row="3" Style="{StaticResource PinkKey}">`</Button>
+            <Button x:Name="D1" Grid.Row="3" Style="{StaticResource PinkKey}">1</Button>
+            <Button x:Name="D2" Grid.Row="3" Style="{StaticResource PinkKey}">2</Button>
+            <Button x:Name="D3" Grid.Row="3" Style="{StaticResource YellowKey}">3</Button>
+            <Button x:Name="D4" Grid.Row="3" Style="{StaticResource GreenKey}">4</Button>
+            <Button x:Name="D5" Grid.Row="3" Style="{StaticResource BlueKey}">5</Button>
+            <Button x:Name="D6" Grid.Row="3" Style="{StaticResource BlueKey}">6</Button>
+            <Button x:Name="D7" Grid.Row="3" Style="{StaticResource VioletKey}">7</Button>
+            <Button x:Name="D8" Grid.Row="3" Style="{StaticResource VioletKey}">8</Button>
+            <Button x:Name="D9" Grid.Row="3" Style="{StaticResource PinkKey}">9</Button>
+            <Button x:Name="D0" Grid.Row="3" Style="{StaticResource YellowKey}">0</Button>
+            <Button x:Name="OemMinus" Grid.Row="3" Style="{StaticResource GreenKey}">-</Button>
+            <Button x:Name="OemPlus" Grid.Row="3" Style="{StaticResource GreenKey}">=</Button>
+            <Button x:Name="Backspace" Grid.Row="3" Style="{StaticResource GrayKey1}">Backspace</Button>
+            <Button x:Name="Tab" Grid.Row="3" Style="{StaticResource GrayKey2}">Tab</Button>
+            <Button x:Name="Q" Grid.Row="3" Style="{StaticResource PinkKey}">q</Button>
+            <Button x:Name="W" Grid.Row="3" Style="{StaticResource YellowKey}">w</Button>
+            <Button x:Name="E" Grid.Row="3" Style="{StaticResource GreenKey}">e</Button>
+            <Button x:Name="R" Grid.Row="3" Style="{StaticResource BlueKey}">r</Button>
+            <Button x:Name="T" Grid.Row="3" Style="{StaticResource BlueKey}">t</Button>
+            <Button x:Name="Y" Grid.Row="3" Style="{StaticResource VioletKey}">y</Button>
+            <Button x:Name="U" Grid.Row="3" Style="{StaticResource VioletKey}">u</Button>
+            <Button x:Name="I" Grid.Row="3" Style="{StaticResource PinkKey}">i</Button>
+            <Button x:Name="O" Grid.Row="3" Style="{StaticResource YellowKey}">o</Button>
+            <Button x:Name="P" Grid.Row="3" Style="{StaticResource GreenKey}">p</Button>
+            <Button x:Name="OemOpenBrackets" Grid.Row="3" Style="{StaticResource GreenKey}">[</Button>
+            <Button x:Name="OemCloseBrackets" Grid.Row="3" Style="{StaticResource GreenKey}">]</Button>
+            <Button x:Name="Oem5" Grid.Row="3" Style="{StaticResource GrayKey2}" Background="LightGreen" FontSize="45">\</Button>
+            <Button x:Name="Capital" Grid.Row="3" Style="{StaticResource GrayKey3}">Caps Lock</Button>
+            <Button x:Name="A" Grid.Row="3" Style="{StaticResource PinkKey}">a</Button>
+            <Button x:Name="S" Grid.Row="3" Style="{StaticResource YellowKey}">s</Button>
+            <Button x:Name="D" Grid.Row="3" Style="{StaticResource GreenKey}">d</Button>
+            <Button x:Name="F" Grid.Row="3" Style="{StaticResource BlueKey}">f</Button>
+            <Button x:Name="G" Grid.Row="3" Style="{StaticResource BlueKey}">g</Button>
+            <Button x:Name="H" Grid.Row="3" Style="{StaticResource VioletKey}">h</Button>
+            <Button x:Name="J" Grid.Row="3" Style="{StaticResource VioletKey}">j</Button>
+            <Button x:Name="K" Grid.Row="3" Style="{StaticResource PinkKey}">k</Button>
+            <Button x:Name="L" Grid.Row="3" Style="{StaticResource YellowKey}">l</Button>
+            <Button x:Name="Oem1" Grid.Row="3" Style="{StaticResource GreenKey}">;</Button>
+            <Button x:Name="OemQuotes" Grid.Row="3" Style="{StaticResource GreenKey}">'</Button>
+            <Button x:Name="Return" Grid.Row="3" Style="{StaticResource GrayKey3}">Enter</Button>
+            <Button x:Name="LeftShift" Grid.Row="3" Style="{StaticResource GrayKey4}">Shift</Button>
+            <Button x:Name="Z" Grid.Row="3" Style="{StaticResource PinkKey}">z</Button>
+            <Button x:Name="X" Grid.Row="3" Style="{StaticResource YellowKey}">x</Button>
+            <Button x:Name="C" Grid.Row="3" Style="{StaticResource GreenKey}">c</Button>
+            <Button x:Name="V" Grid.Row="3" Style="{StaticResource BlueKey}">v</Button>
+            <Button x:Name="B" Grid.Row="3" Style="{StaticResource BlueKey}">b</Button>
+            <Button x:Name="N" Grid.Row="3" Style="{StaticResource VioletKey}">n</Button>
+            <Button x:Name="M" Grid.Row="3" Style="{StaticResource VioletKey}">m</Button>
+            <Button x:Name="OemComma" Grid.Row="3" Style="{StaticResource PinkKey}">,</Button>
+            <Button x:Name="OemPeriod" Grid.Row="3" Style="{StaticResource YellowKey}">.</Button>
+            <Button x:Name="OemQuestion" Grid.Row="3" Style="{StaticResource GreenKey}">/</Button>
+            <Button x:Name="RightShift" Grid.Row="3" Style="{StaticResource GrayKey4}">Shift</Button>
+            <Button x:Name="LeftCtrl" Grid.Row="3" Style="{StaticResource GrayKey2}">Ctrl</Button>
+            <Button x:Name="LWin" Grid.Row="3" Style="{StaticResource GrayKey2}">Win</Button>
+            <Button x:Name="System1" Grid.Row="3" Style="{StaticResource GrayKey2}">Alt</Button>
+            <Button x:Name="Space" Grid.Row="3" Style="{StaticResource Spacekey}">Space</Button>
+            <Button x:Name="System2" Grid.Row="3" Style="{StaticResource GrayKey2}">Alt</Button>
+            <Button x:Name="RWin" Grid.Row="3" Style="{StaticResource GrayKey2}">Win</Button>
+            <Button x:Name="RightCtrl" Grid.Row="3" Style="{StaticResource GrayKey2}">Ctrl</Button>
 
 
         </WrapPanel>
